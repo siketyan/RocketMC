@@ -3,17 +3,25 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
-using RocketMC.Objects;
-using RocketMC.Utilities;
 using RocketMC.Events;
+using RocketMC.Objects;
+using RocketMC.CUI.Utilities;
 
-namespace RocketMC
+namespace RocketMC.CUI
 {
+    /// <summary>
+    /// メインクラス
+    /// </summary>
     public static class Program
     {
         private const string NestedHeader = "  ";
         private const string NestedResultHeader = NestedHeader + "-> ";
+        private const string Success = NestedResultHeader + "Success";
 
+        /// <summary>
+        /// アプリケーションの起動メソッド
+        /// </summary>
+        /// <param name="args">引数の配列</param>
         public static void Main(string[] args)
         {
             Console.WriteLine("> Authenticating your account");
@@ -105,22 +113,37 @@ namespace RocketMC
             detail.Launch(credentials, "java", classpath, true, OnConsoleDataReceived);
         }
 
+        /// <summary>
+        /// ネストされた文字列をコンソールに出力します。
+        /// </summary>
+        /// <param name="str">文字列</param>
         private static void WriteNested(string str)
         {
             Console.Write(NestedHeader + str);
         }
 
+        /// <summary>
+        /// ネストされた結果の文字列をコンソールに出力します。
+        /// </summary>
+        /// <param name="str">文字列</param>
         private static void WriteNestedResult(string str)
         {
             Console.WriteLine(NestedResultHeader + str);
         }
 
+        /// <summary>
+        /// 完了を示す文字列をコンソールに出力します。
+        /// </summary>
         private static void WriteSuccess()
         {
-            ConsoleUtility.UpdateLine(NestedResultHeader + "Success");
+            ConsoleUtility.UpdateLine(Success);
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// コンソール上の前の行を書き換え、ネストして出力します。
+        /// </summary>
+        /// <param name="str">文字列</param>
         private static void UpdatePreviousNestedLine(string str)
         {
             Console.CursorTop--;
@@ -128,6 +151,10 @@ namespace RocketMC
             WriteNested(str);
         }
 
+        /// <summary>
+        /// アセットやライブラリのインストール状況が変化したときのイベントハンドラ
+        /// </summary>
+        /// <param name="e">イベント引数</param>
         private static void OnProgressChanged(MinecraftProgressEventArgs e)
         {
             ConsoleUtility.UpdateLine(
@@ -135,6 +162,11 @@ namespace RocketMC
             );
         }
 
+        /// <summary>
+        /// Minecraftの標準出力を受け取ったときのイベントハンドラ
+        /// </summary>
+        /// <param name="sender">イベントの発生オブジェクト</param>
+        /// <param name="e">イベント引数</param>
         private static void OnConsoleDataReceived(object sender, DataReceivedEventArgs e)
         {
             if (e.Data == null) return;

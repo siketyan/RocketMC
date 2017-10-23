@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RocketMC")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("RocketMC CUI")]
+[assembly: AssemblyDescription("A lightweight, CUI-based Minecraft launcher.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Siketyan")]
 [assembly: AssemblyProduct("RocketMC")]
 [assembly: AssemblyCopyright("Copyright © 2017 Siketyan.")]
 [assembly: AssemblyTrademark("")]

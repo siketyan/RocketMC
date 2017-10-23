@@ -7,11 +7,15 @@ using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
 using RocketMC.Enums;
-using RocketMC.Objects;
 using RocketMC.Events;
+using RocketMC.Objects;
+using RocketMC.Utilities;
 
-namespace RocketMC.Utilities
+namespace RocketMC
 {
+    /// <summary>
+    /// メインクラス
+    /// </summary>
     public static class Minecraft
     {
         private const string AssetsUrlBase = "https://resources.download.minecraft.net/";

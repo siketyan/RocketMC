@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Security;
 
-namespace RocketMC.Utilities
+namespace RocketMC.CUI.Utilities
 {
     /// <summary>
     /// 対話式コンソールのためのユーティリティ

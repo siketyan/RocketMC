@@ -30,7 +30,7 @@ namespace RocketMC.Utilities
                                 )
                                 .Single())
                     .Any(attribute => attribute.Value == name)
-                        ? Convert.ChangeType(Enum.Parse(enumType, name), type)
+                        ? Convert.ChangeType(Enum.Parse(enumType, name, true), type)
                         : Activator.CreateInstance(type);
         }
     }
